@@ -13,5 +13,13 @@ public class Main {
         //Instanciamiento de la clase Yadira.
         Yadira yadira = new Yadira("Hola, te saluda Yadira. La mamá de David.");
 
+        //Llamar a la función que le asigna un nuevo cumpleanos a Yadira.
+        yadira.setAge();
+
+        //Imprimir la edad de Yadira.
+        System.out.println("La edad de Yadira actual es de: " + yadira.getAge() + ", años cumplidos.");
+
+        //Imprimir el Hobby de Yadira.
+        System.out.println("El Hobby de Yadira es " + yadira.getHobby() + ".");
     }
 }
