@@ -6,5 +6,6 @@ public class Yadira {
 
         //Imprimir el parámetro saludo.
         System.out.println(saludo);
+
     }
 }
