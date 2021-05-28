@@ -9,7 +9,7 @@ public class Yadira {
 
     public Yadira(String saludo, int age, String hobby){
 
-        //Establecer los atributos de la clase.
+        //Establecer los atributos de la clase desde los parámetros.
         this.Age = age;
         this.Hobby = hobby;
 
