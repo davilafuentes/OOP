@@ -1,8 +1,8 @@
 package com.ucreativa.familia;
 
-public class davilafuentes {
+public class davilafuentes extends Yadira {
 
-    public davilafuentes(){
-        System.out.println("Hola, yo soy David!");
+    public davilafuentes(String saludo, int age, String hobby){
+        super(saludo, age, hobby);
     }
 }

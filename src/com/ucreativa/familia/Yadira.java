@@ -7,11 +7,11 @@ public class Yadira {
     private String Hobby;
 
 
-    public Yadira(String saludo){
+    public Yadira(String saludo, int age, String hobby){
 
-        //Establecer los valores por defecto de los atributos de la clase.
-        this.Age = 52;
-        this.Hobby = "Leer";
+        //Establecer los atributos de la clase.
+        this.Age = age;
+        this.Hobby = hobby;
 
         //Imprimir el parámetro saludo.
         System.out.println(saludo);
