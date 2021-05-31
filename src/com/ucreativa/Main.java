@@ -1,14 +1,14 @@
 package com.ucreativa;
 
 import com.ucreativa.familia.Yadira;
-import com.ucreativa.familia.davilafuentes;
+import com.ucreativa.familia.David;
 
 public class Main {
 
     public static void main(String[] args) {
 
         //Instanciamiento de la clase David.
-        davilafuentes david = new davilafuentes("Hola, yo soy David!", 30, "Turistear");
+        David david = new David("Hola, yo soy David!", 30, "Turistear");
 
         //Instanciamiento de la clase Yadira.
         Yadira yadira = new Yadira("Hola, te saluda Yadira. La mamá de David.", 53, "Leer");
