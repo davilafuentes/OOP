@@ -1,4 +1,4 @@
-package com.ucreativa.vacunacion;
+package com.ucreativa.vacunacion.entities;
 
 public class Persona {
 
@@ -20,7 +20,7 @@ public class Persona {
     }
     //endregion
 
-    //region Creación de los SETS para los atributos de la clase.
+    //region Creación de los GETS para los atributos de la clase.
     public String getNombre() {
 
         //Retornar el nombre de la persona.
@@ -46,7 +46,7 @@ public class Persona {
     }
     //endregion
 
-    //region Creación de los GETS para los atributos de la clase.
+    //region Creación de los SETS para los atributos de la clase.
     public void setEdad(int edad) {
 
         //Setear la edad de la persona.
