@@ -2,13 +2,11 @@ package com.ucreativa.vacunacion;
 
 
 import com.ucreativa.vacunacion.entities.Amigo;
-import com.ucreativa.vacunacion.entities.BitacoraVacunas;
 import com.ucreativa.vacunacion.entities.Familiar;
 import com.ucreativa.vacunacion.entities.Persona;
+import com.ucreativa.vacunacion.repositories.InMemoryRepository;
 
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 import java.util.Scanner;
 
 public class Main {
@@ -18,8 +16,8 @@ public class Main {
         //06-03-2021
         //Declaración de mi Scanner para leer el Input del usuario.
         Scanner myScanner = new Scanner(System.in);
-        //Declaración de la lista de bitácora de vacunas.
-        List<BitacoraVacunas> lstVacunas = new ArrayList<>();
+        //Declaración de la clase del repositorio.
+        InMemoryRepository repo = new InMemoryRepository();
         //Declaración de las variables que van a contener la información quu proviene del usuario.
         String sNombre, sCedula, sEdad, sRiesgo, sEsAmigo, sRelacion, sFacebook, sParentesco, sMarca;
         //Declaración del objeto Persona.
@@ -66,18 +64,20 @@ public class Main {
             System.out.println("Vacuna -- Marca: ");
             sMarca = myScanner.nextLine();
 
-            //Agregar un nuevo registro a la lista de la bitácora de vacunas.
-            lstVacunas.add(new BitacoraVacunas(oPersona, sMarca, new Date()));
+            //Agregar el registro a la BD.
+            //7-6-2021: Guardar el registro en el repositorio mediante la nueva clase.
+            repo.save(oPersona, sMarca, new Date());
 
             System.out.println("Quiere imprimir la lista? (S/N): ");
             String sImpresion = myScanner.nextLine();
 
             if (sImpresion.equals("S"))
             {
-                for (BitacoraVacunas oObjeto : lstVacunas)
+                for (String oObjeto : repo.get())
                 {
                     //Imprimir el objeto actual de la lista de bitácoras según la posición del ciclo.
-                    System.out.println(oObjeto.getPersona().getNombre() + ", vacunad@ en la fecha: " + oObjeto.getFecha());
+                    //7-6-2021: Imprimir los registros almacenados actualmente en la clase del repositorio.
+                    System.out.println(oObjeto);
                 }
             }
         }
