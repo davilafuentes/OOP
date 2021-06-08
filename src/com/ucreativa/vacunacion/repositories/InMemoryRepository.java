@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-public class InMemoryRepository {
+public class InMemoryRepository implements Repository {
 
     //region Declaración de los atributos de la clase.
     private List<BitacoraVacunas> db;
