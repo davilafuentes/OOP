@@ -1,14 +1,10 @@
 package com.ucreativa.vacunacion;
 
 
-import com.ucreativa.vacunacion.entities.Amigo;
-import com.ucreativa.vacunacion.entities.Familiar;
 import com.ucreativa.vacunacion.entities.Persona;
 import com.ucreativa.vacunacion.repositories.FileRepository;
-import com.ucreativa.vacunacion.repositories.InMemoryRepository;
-import com.ucreativa.vacunacion.repositories.Repository;
+import com.ucreativa.vacunacion.services.BitacoraService;
 
-import java.util.Date;
 import java.util.Scanner;
 
 public class Main {
@@ -19,9 +15,9 @@ public class Main {
         //Declaración de mi Scanner para leer el Input del usuario.
         Scanner myScanner = new Scanner(System.in);
         //Declaración de la clase del repositorio.
-        Repository repo = new FileRepository();
-        //Declaración de las variables que van a contener la información quu proviene del usuario.
-        String sNombre, sCedula, sEdad, sRiesgo, sEsAmigo, sRelacion, sFacebook, sParentesco, sMarca;
+        BitacoraService oService = new BitacoraService(new FileRepository());
+        //Declaración de las variables que van a contener la información que proviene del usuario.
+        String sNombre, sCedula, sEdad, sRiesgo, sEsAmigo, sRelacion = null, sFacebook = null, sParentesco = null, sMarca;
         //Declaración del objeto Persona.
         Persona oPersona;
 
@@ -51,16 +47,11 @@ public class Main {
                 System.out.println("Digite la dirección de Facebook: ");
                 sFacebook = myScanner.nextLine();
 
-                //Creación del objeto Amigo.
-                oPersona = new Amigo(sNombre, sCedula, Integer.parseInt(sEdad), sRiesgo.equals("S"), sRelacion, sFacebook);
             }
             else
             {
                 System.out.println("Digite el Parentesco: ");
                 sParentesco = myScanner.nextLine();
-
-                //Creación del objeto Familiar.
-                oPersona = new Familiar(sNombre, sCedula, Integer.parseInt(sEdad), sRiesgo.equals("S"), sParentesco);
             }
 
             System.out.println("Vacuna -- Marca: ");
@@ -68,20 +59,20 @@ public class Main {
 
             //Agregar el registro a la BD.
             //7-6-2021: Guardar el registro en el repositorio mediante la nueva clase.
-            repo.save(oPersona, sMarca, new Date());
+            oService.save(sNombre, sCedula, sEdad, sRiesgo, sEsAmigo, sRelacion, sFacebook, sParentesco, sMarca);
 
-            //System.out.println("Quiere imprimir la lista? (S/N): ");
-            //String sImpresion = myScanner.nextLine();
+            System.out.println("Quiere imprimir la lista? (S/N): ");
+            String sImpresion = myScanner.nextLine();
 
-            //if (sImpresion.equals("S"))
-            //{
-            //    for (String oObjeto : repo.get())
-            //    {
+            if (sImpresion.equals("S"))
+            {
+                for (String oObjeto : oService.get())
+                {
                     //Imprimir el objeto actual de la lista de bitácoras según la posición del ciclo.
                     //7-6-2021: Imprimir los registros almacenados actualmente en la clase del repositorio.
-            //        System.out.println(oObjeto);
-            //    }
-            //}
+                    System.out.println(oObjeto);
+                }
+            }
         }
     }
 }
