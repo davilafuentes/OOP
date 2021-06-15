@@ -19,22 +19,20 @@ public class BitacoraService {
     }
 
     public void save(String pNombre, String pCedula, String pEdad,
-                     String pRiesgo, String pEsAmigo, String pRelacion,
+                     boolean pRiesgo, boolean pEsAmigo, String pRelacion,
                      String pFacebook, String pParentesco, String pMarca)
     {
         int iEdad = Integer.parseInt(pEdad);
-        boolean bEsAmigo = pEsAmigo.equals("S");
-        boolean bRiesgo = pRiesgo.equals("S");
 
         Persona oPersona = null;
 
-        if (bEsAmigo)
+        if (pEsAmigo)
         {
-            oPersona = new Amigo(pNombre, pCedula, iEdad, bRiesgo, pRelacion, pFacebook);
+            oPersona = new Amigo(pNombre, pCedula, iEdad, pRiesgo, pRelacion, pFacebook);
         }
         else
         {
-            oPersona = new Familiar(pNombre, pCedula, iEdad, bRiesgo, pParentesco);
+            oPersona = new Familiar(pNombre, pCedula, iEdad, pRiesgo, pParentesco);
         }
 
         this.repository.save(oPersona, pMarca, new Date());
