@@ -38,7 +38,6 @@ public class InMemoryRepository implements Repository {
         for (BitacoraVacunas oObjeto : db)
         {
             lines.add(oObjeto.getPersona().getNombre() + " - " + oObjeto.getMarca() + " - " + format.format(oObjeto.getFecha()));
-
         }
 
         //Retornar los registros almacenados.

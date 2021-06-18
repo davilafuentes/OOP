@@ -83,15 +83,19 @@ public class FrontEnd extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 BitacoraService oService = new BitacoraService(new FileRepository());
-                oService.save(txtNombre.getText(),
-                              txtCedula.getText(),
-                              txtEdad.getText(),
-                              chkRiesgo.isSelected(),
-                              chkEsAmigo.isSelected(),
-                              txtRelacion.getText(),
-                              txtFacebook.getText(),
-                              txtParentesco.getText(),
-                              txtMarca.getText());
+                try {
+                    oService.save(txtNombre.getText(),
+                                  txtCedula.getText(),
+                                  txtEdad.getText(),
+                                  chkRiesgo.isSelected(),
+                                  chkEsAmigo.isSelected(),
+                                  txtRelacion.getText(),
+                                  txtFacebook.getText(),
+                                  txtParentesco.getText(),
+                                  txtMarca.getText());
+                } catch (ErrorEnEdadException errorEnEdadException) {
+                    errorEnEdadException.printStackTrace();
+                }
 
                 txtNombre.setText("");
                 txtCedula.setText("");
